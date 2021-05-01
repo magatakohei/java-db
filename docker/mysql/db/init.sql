@@ -1,0 +1,15 @@
+CREATE DATABASE TEST_DB;
+USE TEST_DB;
+
+CREATE TABLE SURVEY (
+  NAME               VARCHAR(20),
+  AGE                INTEGER,
+  SEX                INTEGER,
+  SATISFACTION_LEVEL INTEGER,
+  MESSAGE            VARCHAR(250),
+  TIME               TIMESTAMP
+);
+
+
+GRANT ALL ON TEST_DB.* TO 'user'@'%';
+FLUSH PRIVILEGES;
