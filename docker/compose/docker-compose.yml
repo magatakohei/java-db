@@ -1,23 +1,31 @@
 # versionは3系が最新版で、versionによって書き方が異なる
 version: "3"
 services:
-  # mysql:
-  #   build: ../mysql/ #Dockerfileからビルドすることを示す
-  #   image: original_mysql # イメージの名前
-  #   ports:
-  #     - "3306:3306"
-  #   environment:
-  #     MYSQL_ROOT_PASSWORD: root
-  #     MYSQL_DATABAE: TEST_DB
-  #     MYSQL_USER: user
-  #     MYSQL_PASSWORD: password
-  #   volumes:
-  #     - ../mysql/db:/docker-entrypoint-initdb.d
+  db:
+    build: ../mysql/ #Dockerfileからビルドすることを示す
+    image: original_mysql # イメージの名前
+    ports:
+      - "3306:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABAE: TEST_DB
+      MYSQL_USER: user
+      MYSQL_PASSWORD: password
+    networks:
+      - appnet
+    volumes:
+      - ../mysql/db:/docker-entrypoint-initdb.d
 
   tomcat:
     build: ../tomcat
     image: original_tomcat
     ports:
       - "8080:8080"
+    networks:
+      - appnet
     volumes:
       - ../tomcat/src:/usr/local/tomcat/
+
+networks:
+  appnet:
+    external: true

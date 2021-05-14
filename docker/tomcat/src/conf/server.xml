@@ -43,6 +43,13 @@
               description="User database that can be updated and saved"
               factory="org.apache.catalina.users.MemoryUserDatabaseFactory"
               pathname="conf/tomcat-users.xml" />
+     <Resource name="jdbc/infoscoop" type="javax.sql.DataSource"
+               username="root"
+               password="${MYSQL_ENV_MYSQL_ROOT_PASSWORD}"
+               driverClassName="com.mysql.jdbc.Driver"
+               url="jdbc:mysql://${MYSQL_PORT_3306_TCP_ADDR}:${MYSQL_PORT_3306_TCP_PORT}/iscoop?useUnicode=true&amp;characterEncoding=UTF-8"
+               validationQuery="select 1"
+               maxActive="8" maxIdle="4" maxWait="-1"/>
   </GlobalNamingResources>
 
   <!-- A "Service" is a collection of one or more "Connectors" that share

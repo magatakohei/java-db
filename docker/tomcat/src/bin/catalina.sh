@@ -387,6 +387,9 @@ if [ "$1" = "debug" ] ; then
         -Dcatalina.base="$CATALINA_BASE" \
         -Dcatalina.home="$CATALINA_HOME" \
         -Djava.io.tmpdir="$CATALINA_TMPDIR" \
+        -DMYSQL_ENV_MYSQL_ROOT_PASSWORD=\"$MYSQL_ENV_MYSQL_ROOT_PASSWORD\" \
+        -DMYSQL_PORT_3306_TCP_ADDR=\"$MYSQL_PORT_3306_TCP_ADDR\" \
+        -DMYSQL_PORT_3306_TCP_PORT=\"$MYSQL_PORT_3306_TCP_PORT\" \
         org.apache.catalina.startup.Bootstrap "$@" start
     else
       eval exec "\"$_RUNJDB\"" "\"$CATALINA_LOGGING_CONFIG\"" $LOGGING_MANAGER "$JAVA_OPTS" "$CATALINA_OPTS" \
@@ -396,6 +399,9 @@ if [ "$1" = "debug" ] ; then
         -Dcatalina.base="$CATALINA_BASE" \
         -Dcatalina.home="$CATALINA_HOME" \
         -Djava.io.tmpdir="$CATALINA_TMPDIR" \
+        -DMYSQL_ENV_MYSQL_ROOT_PASSWORD=\"$MYSQL_ENV_MYSQL_ROOT_PASSWORD\" \
+        -DMYSQL_PORT_3306_TCP_ADDR=\"$MYSQL_PORT_3306_TCP_ADDR\" \
+        -DMYSQL_PORT_3306_TCP_PORT=\"$MYSQL_PORT_3306_TCP_PORT\" \
         org.apache.catalina.startup.Bootstrap "$@" start
     fi
   fi
